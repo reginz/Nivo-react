@@ -1,5 +1,5 @@
 import { ResponsiveCalendar } from "@nivo/calendar";
-import { calendarData } from "../calendarData";
+import { calendarData } from '../data/calendarData'
 
 const Calendar = () => {
 	return (
@@ -29,6 +29,7 @@ const Calendar = () => {
 						itemDirection: "right-to-left",
 					},
 				]}
+
 			/>
 		</div>
 	);

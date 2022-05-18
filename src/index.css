@@ -8,7 +8,6 @@ body {
 	font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 	width: 100vw;
 	height: 100vh;
-	background: #000;
 }
 
 nav {
@@ -20,7 +19,6 @@ nav {
 
 a {
 	display: block;
-	color: #fff;
 	margin: 0 0.5rem;
   text-decoration: none;
   transition: ease 0.5s all;
@@ -33,16 +31,13 @@ a:hover{
 
 h2 {
 	margin: 1rem 0;
-	color: #fff;
 	text-align: center;
 }
 
 footer {
 	margin: 1.5rem 0 1.5rem;
-	color: #fff;
 	text-align: center;
 }
 
 svg g text{
-  fill: #fff !important;
 }
