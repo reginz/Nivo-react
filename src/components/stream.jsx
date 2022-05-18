@@ -1,8 +1,10 @@
 // install (please make sure versions match peerDependencies)
-// yarn add @nivo/core @nivo/swarmplot
-import { ResponsiveSwarmPlot } from "@nivo/swarmplot";
+// yarn add @nivo/core @nivo/pie
+import { ResponsivePie } from "@nivo/pie";
 import { streamData } from "../data/streamData";
-
+import PanToolRoundedIcon from "@mui/icons-material/PanToolRounded";
+import ThumbUpAltRoundedIcon from "@mui/icons-material/ThumbUpAltRounded";
+import ThumbDownAltRoundedIcon from "@mui/icons-material/ThumbDownAltRounded";
 // make sure parent container have a defined height when using
 // responsive component, otherwise height will be 0 and
 // no chart will be rendered.
@@ -10,79 +12,139 @@ import { streamData } from "../data/streamData";
 // you'll often use just a few of them.
 const Stream = () => {
   return (
-    <div style={{ height: 400 }}>
-      <ResponsiveSwarmPlot
+    <div style={{ height: 400, width: 500 }}>
+      <ResponsivePie
         data={streamData}
-        groups={["group A", "group B", "group C"]}
-        identity="id"
-        value="price"
-        valueFormat="$.2f"
-        valueScale={{ type: "linear", min: 0, max: 500, reverse: false }}
-        size={{
-          key: "volume",
-          values: [4, 20],
-          sizes: [6, 20],
-        }}
-        forceStrength={4}
-        simulationIterations={100}
+        margin={{ top: 40, right: 80, bottom: 80, left: 80 }}
+        startAngle={-90}
+        endAngle={90}
+        innerRadius={0.5}
+        padAngle={1}
+        cornerRadius={9}
+        activeOuterRadiusOffset={8}
+        colors={{ scheme: "nivo" }}
+        borderWidth={1}
         borderColor={{
           from: "color",
-          modifiers: [
-            ["darker", 0.6],
-            ["opacity", 0.5],
-          ],
+          modifiers: [["darker", 0.2]],
         }}
-        margin={{ top: 80, right: 100, bottom: 80, left: 100 }}
-        axisTop={{
-          orient: "top",
-          tickSize: 10,
-          tickPadding: 5,
-          tickRotation: 0,
-          legend: "group if vertical, price if horizontal",
-          legendPosition: "middle",
-          legendOffset: -46,
+        arcLinkLabelsSkipAngle={10}
+        arcLinkLabelsTextColor="#333333"
+        arcLinkLabelsThickness={2}
+        arcLinkLabelsColor={{ from: "color" }}
+        arcLabelsSkipAngle={10}
+        arcLabelsTextColor={{
+          from: "color",
+          modifiers: [["darker", 2]],
         }}
-        axisRight={{
-          orient: "right",
-          tickSize: 10,
-          tickPadding: 5,
-          tickRotation: 0,
-          legend: "price if vertical, group if horizontal",
-          legendPosition: "middle",
-          legendOffset: 76,
-        }}
-        axisBottom={{
-          orient: "bottom",
-          tickSize: 10,
-          tickPadding: 5,
-          tickRotation: 0,
-          legend: "group if vertical, price if horizontal",
-          legendPosition: "middle",
-          legendOffset: 46,
-        }}
-        axisLeft={{
-          orient: "left",
-          tickSize: 10,
-          tickPadding: 5,
-          tickRotation: 0,
-          legend: "price if vertical, group if horizontal",
-          legendPosition: "middle",
-          legendOffset: -76,
-        }}
-		legends={[
-			{
-				anchor: "bottom-right",
-				direction: "row",
-				translateY: 36,
-				itemCount: 4,
-				itemWidth: 42,
-				itemHeight: 36,
-				itemsSpacing: 14,
-				itemDirection: "right-to-left",
-			},
-		]}
-		isInteractive={false}
+        defs={[
+          {
+            id: "dots",
+            type: "patternDots",
+            background: "inherit",
+            color: "rgba(255, 255, 255, 0.3)",
+            size: 4,
+            padding: 1,
+            stagger: true,
+          },
+          {
+            id: "lines",
+            type: "patternLines",
+            background: "inherit",
+            color: "rgba(255, 255, 255, 0.3)",
+            rotation: -45,
+            lineWidth: 6,
+            spacing: 10,
+          },
+        ]}
+        fill={[
+          {
+            match: {
+              id: "ruby",
+            },
+            id: "dots",
+          },
+          {
+            match: {
+              id: "c",
+            },
+            id: "dots",
+          },
+          {
+            match: {
+              id: "go",
+            },
+            id: "dots",
+          },
+          {
+            match: {
+              id: "python",
+            },
+            id: "dots",
+          },
+          {
+            match: {
+              id: "scala",
+            },
+            id: "lines",
+          },
+          {
+            match: {
+              id: "lisp",
+            },
+            id: "lines",
+          },
+          {
+            match: {
+              id: "elixir",
+            },
+            id: "lines",
+          },
+          {
+            match: {
+              id: "javascript",
+            },
+            id: "lines",
+          },
+        ]}
+        legends={[
+          {
+            anchor: "bottom",
+            direction: "row",
+            justify: false,
+            translateX: 0,
+            translateY: 56,
+            itemsSpacing: 0,
+            itemWidth: 100,
+            itemHeight: 18,
+            itemTextColor: "#999",
+            itemDirection: "left-to-right",
+            itemOpacity: 1,
+            symbolSize: 18,
+            symbolShape: "circle",
+            effects: [
+              {
+                on: "hover",
+                style: {
+                  itemTextColor: "#000",
+                },
+              },
+            ],
+          },
+        ]}
       />
+
+      <div className="pr-5">
+        <h4>
+          <ThumbUpAltRoundedIcon /> Promoters:{" "}
+        </h4>
+        <h4>
+          <PanToolRoundedIcon /> Promoters:{" "}
+        </h4>
+        <h4>
+          <ThumbDownAltRoundedIcon /> Promoters:{" "}
+        </h4>
+      </div>
     </div>
   );
 };
