@@ -1,21 +1,21 @@
 export const streamData = [
   {
-    id: "python",
-    label: "python",
+    id: "detractors",
+    label: "detractors",
     value: 459,
-    color: "hsl(170°, 51%, 59%)",
+    color: "#fd7963",
   },
 
   {
-    id: "hack",
-    label: "hack",
+    id: "passives",
+    label: "passives",
     value: 565,
-    color: "hsl(96, 70%, 50%)",
+    color: "#fae95e",
   },
   {
-    id: "php",
-    label: "php",
+    id: "promoters",
+    label: "promoters",
     value: 394,
-    color: "hsl(130, 70%, 50%)",
+    color: "#62cdbb",
   },
 ];

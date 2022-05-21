@@ -12,7 +12,7 @@ import ThumbDownAltRoundedIcon from "@mui/icons-material/ThumbDownAltRounded";
 // you'll often use just a few of them.
 const Stream = () => {
   return (
-    <div style={{ height: 400, width: 500 }}>
+    <div style={{ height: 200, width: 350 }}>
       <ResponsivePie
         data={streamData}
         margin={{ top: 40, right: 80, bottom: 80, left: 80 }}
@@ -20,9 +20,9 @@ const Stream = () => {
         endAngle={90}
         innerRadius={0.5}
         padAngle={1}
-        cornerRadius={9}
+        cornerRadius={4}
         activeOuterRadiusOffset={8}
-        colors={{ scheme: "nivo" }}
+        colors={streamData.map((color) => color.color)}
         borderWidth={1}
         borderColor={{
           from: "color",
@@ -57,56 +57,6 @@ const Stream = () => {
             spacing: 10,
           },
         ]}
-        fill={[
-          {
-            match: {
-              id: "ruby",
-            },
-            id: "dots",
-          },
-          {
-            match: {
-              id: "c",
-            },
-            id: "dots",
-          },
-          {
-            match: {
-              id: "go",
-            },
-            id: "dots",
-          },
-          {
-            match: {
-              id: "python",
-            },
-            id: "dots",
-          },
-          {
-            match: {
-              id: "scala",
-            },
-            id: "lines",
-          },
-          {
-            match: {
-              id: "lisp",
-            },
-            id: "lines",
-          },
-          {
-            match: {
-              id: "elixir",
-            },
-            id: "lines",
-          },
-          {
-            match: {
-              id: "javascript",
-            },
-            id: "lines",
-          },
-        ]}
         legends={[
           {
             anchor: "bottom",
@@ -133,18 +83,6 @@ const Stream = () => {
           },
         ]}
       />
-
-      <div className="pr-5">
-        <h4>
-          <ThumbUpAltRoundedIcon /> Promoters:{" "}
-        </h4>
-        <h4>
-          <PanToolRoundedIcon /> Promoters:{" "}
-        </h4>
-        <h4>
-          <ThumbDownAltRoundedIcon /> Promoters:{" "}
-        </h4>
-      </div>
     </div>
   );
 };

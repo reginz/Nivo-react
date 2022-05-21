@@ -1,13 +1,13 @@
 import { BrowserRouter, Route, Switch, NavLink } from 'react-router-dom';
 import Calendar from './components/calendar';
-import Stream from './components/stream';
+import Nps from './page/nps';
 
 const App = () => {
 	return (
 		<BrowserRouter>
 			<nav>
 				<NavLink exact activeStyle={{ textDecoration: 'underline' }} to="/">
-					Stream
+					Customer Satisfaction
 				</NavLink>
 				<NavLink
 					exact
@@ -18,7 +18,7 @@ const App = () => {
 				</NavLink>
 			</nav>
 			<Switch>
-				<Route exact path="/" component={Stream} />
+				<Route exact path="/" component={Nps} />
 				<Route exact path="/calendar" component={Calendar} />
 			</Switch>
 		</BrowserRouter>
